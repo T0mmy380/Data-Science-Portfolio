@@ -24,7 +24,7 @@ The dataset includes over 3,000 movies, with key variables such as *year of rele
 
 **Visualization**
 
-![Movie Revenue by Year]<img width="1200" height="600" alt="year_vs_average_vote_analysis" src="https://github.com/user-attachments/assets/d747df34-b76b-45e7-8c4d-adee7371595f" />
+<img width="1200" height="600" alt="year_vs_revenue_analysis" src="https://github.com/user-attachments/assets/598c845c-6a53-4ab5-a2c4-a9ade3cdf6a5" />
 
 **Conclusion**
 > Revenues have grown significantly over time, confirming long-term financial growth in the film industry.
@@ -51,7 +51,7 @@ The dataset includes over 3,000 movies, with key variables such as *year of rele
 
 **Visualization**
 
-![Movie Average Vote by Year](year_vs_average_vote_analysis.png)
+<img width="1200" height="600" alt="year_vs_average_vote_analysis" src="https://github.com/user-attachments/assets/d8ed4067-3080-4b63-8216-75e99765cb5d" />
 
 **Conclusion**
 > Average movie ratings have slightly declined over time, but the effect of year is weak.  
@@ -92,7 +92,7 @@ The dataset includes over 3,000 movies, with key variables such as *year of rele
 
 **Visualization**
 
-![Feature Coefficients (log-revenue model)](mlr_revenue_coefficients.png)
+<img width="1000" height="500" alt="mlr_revenue_coefficients" src="https://github.com/user-attachments/assets/91e7bcb8-3937-403f-a527-35612515a141" />
 
 ---
 
