@@ -13,9 +13,9 @@ The dataset includes over 3,000 movies, with key variables such as *year of rele
 - **Slope:** +1,937,245.52 → revenues increase by about **$1.94M per year**
 - **Intercept:** -3,751,436,514.64
 - **Equation:**  
-  \[
-$Revenue = 1{,}937{,}245.52 \times Year - 3{,}751{,}436{,}514.64$
-  \]
+<p align="center">
+  <strong><span style="font-size:1.3em;">Revenue = 1,937,245.52 × Year − 3,751,436,514.64</span></strong>
+</p>
 
 **Interpretation**
 - The model shows a **strong upward trend**: newer movies consistently earn more revenue.
