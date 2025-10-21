@@ -40,11 +40,8 @@ The dataset includes over 3,000 movies, with key variables such as *year of rele
 - **R²:** 0.0629 (explains ~6.3% of variance)
 
 **Equation:**  
-\[
-\text{Average Vote} = -0.017873 \times \text{Year} + 42.1072
-\]
 <p align="center">
-  <strong><span style="font-size:1.3em;">Average Vote = -0.017873 × Year − + 42.1072</span></strong>
+  <strong><span style="font-size:1.3em;">Average Vote = -0.017873 × Year + 42.1072</span></strong>
 </p>
 
 **Interpretation**
