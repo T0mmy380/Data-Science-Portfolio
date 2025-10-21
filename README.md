@@ -24,7 +24,7 @@ The dataset includes over 3,000 movies, with key variables such as *year of rele
 
 **Visualization**
 
-![Movie Revenue by Year](<img width="1200" height="600" alt="year_vs_average_vote_analysis" src="https://github.com/user-attachments/assets/d747df34-b76b-45e7-8c4d-adee7371595f" />)
+![Movie Revenue by Year]<img width="1200" height="600" alt="year_vs_average_vote_analysis" src="https://github.com/user-attachments/assets/d747df34-b76b-45e7-8c4d-adee7371595f" />
 
 **Conclusion**
 > Revenues have grown significantly over time, confirming long-term financial growth in the film industry.
