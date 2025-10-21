@@ -14,7 +14,7 @@ The dataset includes over 3,000 movies, with key variables such as *year of rele
 - **Intercept:** -3,751,436,514.64
 - **Equation:**  
   \[
-  \text{Revenue} = 1,937,245.52 \times \text{Year} - 3,751,436,514.64
+$Revenue = 1{,}937{,}245.52 \times Year - 3{,}751{,}436{,}514.64$
   \]
 
 **Interpretation**
