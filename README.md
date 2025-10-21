@@ -143,4 +143,111 @@ Main findings:
 
 ---
 
-*(Next Sections: Classification Models, Clustering Models, Forecasting Models, etc.)*
+## 🎯 Section 2: Clustering Models
+
+Clustering models are used to discover **natural groupings** within data without predefined labels.  
+Here, **K-Means Clustering** was applied to the movie dataset to identify economic and popularity segments within the film industry.
+
+---
+
+### 🎥 2.1 Market Segmentation with K-Means Clustering
+
+**Goal:**  
+To group movies by *budget*, *revenue*, *popularity*, and *vote_average* to reveal hidden patterns such as **blockbusters**, **studio films**, and **independent productions**.
+
+---
+
+### ⚙️ Model Summary
+
+| Step | Description |
+|:------|:-------------|
+| **Features Used** | `budget`, `revenue`, `popularity`, `vote_average` |
+| **Scaling** | Data normalized using `StandardScaler` |
+| **Model** | K-Means (n_clusters = 3, random_state = 42) |
+| **Evaluation Method** | Elbow Method (Inertia plot) |
+
+---
+
+### 📈 Elbow Method for Optimal K
+
+The **Elbow Method** helps find the ideal number of clusters by analyzing where inertia (within-cluster variance) stops decreasing rapidly.
+
+**Visualization**
+
+<img width="640" height="480" alt="kmeans_elbow_method" src="https://github.com/user-attachments/assets/f6badb62-0417-46aa-9c15-2a9602e796f7" />
+
+#### 🔍 Interpretation
+The “elbow” appears at **K = 3**, suggesting that three clusters best represent distinct groups in the data.  
+Beyond three, additional clusters add minimal improvement, indicating natural segmentation into **three main movie categories**.
+
+---
+
+### 🎬 Movie Clustering Results (K = 3)
+
+**Visualization**
+
+<img width="800" height="600" alt="kmeans_clusters" src="https://github.com/user-attachments/assets/70bbf4b4-0f93-4f56-be88-cd19061d5356" />
+
+**Cluster Summary**
+
+| Cluster | Avg. Budget ($) | Avg. Revenue ($) | Avg. Popularity | Avg. Rating |
+|:--:|:--:|:--:|:--:|:--:|
+| **0** | 54,104,710 | 153,146,300 | 38.35 | 6.52 |
+| **1** | 11,077,140 | 17,270,430 | 9.77 | 5.88 |
+| **2** | 151,637,700 | 641,251,000 | 98.46 | 6.72 |
+
+---
+
+### 🔍 Interpretation of Clusters
+
+#### 🎞️ **Cluster 2 — Blockbusters**
+- **Highest budgets and revenues**
+- **Most popular and above-average ratings**
+- Represents major commercial hits or global franchises (e.g., Marvel, Star Wars)
+
+#### 🍿 **Cluster 0 — Standard Studio Films**
+- **Moderate budgets and moderate revenues**
+- **Average popularity and ratings**
+- Represents typical wide-release films with balanced success
+
+#### 🎬 **Cluster 1 — Indie/Low-Budget Productions**
+- **Lowest budgets, lowest revenues**
+- **Low popularity and slightly lower ratings**
+- Represents smaller, niche, or limited-release projects
+
+---
+
+### 💡 What This Shows
+> The K-Means algorithm successfully discovered **three economic tiers** in the movie industry.  
+> Budget and revenue are the strongest dividing factors, while popularity correlates strongly with both.  
+> Interestingly, **ratings remain fairly consistent**, showing that higher budgets boost exposure — not necessarily quality.
+
+---
+
+### 🧠 Technical Notes
+- Clusters were computed using **4D feature space**, but the visualization shows only 2D (Budget vs Revenue).  
+- Some overlap in the scatter plot is expected since **true separation occurs in higher dimensions**.  
+- Dimensionality reduction (PCA) can be applied for cleaner visualization of high-dimensional clusters.
+
+---
+
+### 📊 Combined Insights from Clustering
+| Insight | Explanation |
+|:---------|:-------------|
+| 🎥 **3 main market segments** | Indie → Studio → Blockbuster |
+| 💰 **Budget drives visibility** | Higher investment increases reach and marketing power |
+| ⭐ **Ratings remain stable** | Quality perception doesn’t scale directly with spending |
+| 🌐 **Popularity linked to exposure** | Commercial success correlates with visibility, not necessarily content quality |
+
+---
+
+### 🧩 Skills Demonstrated in This Section
+- Unsupervised machine learning (K-Means)
+- Feature scaling and normalization
+- Elbow Method for cluster selection
+- Multivariate visualization (Budget vs Revenue)
+- Cluster interpretation and market segmentation analysis
+
+---
+
+*(Next Sections: Classification Models, Forecasting Models, etc.)*
