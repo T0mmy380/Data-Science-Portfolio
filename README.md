@@ -250,4 +250,129 @@ Beyond three, additional clusters add minimal improvement, indicating natural se
 
 ---
 
-*(Next Sections: Classification Models, Forecasting Models, etc.)*
+## 🎯 Section 3: Classification Models
+
+Classification models predict **categories** instead of continuous numbers.  
+Here, a **Logistic Regression** model is applied to classify whether a movie is a **Hit (1)** or **Flop (0)** based on production and audience features such as budget, popularity, ratings, and vote count.
+
+---
+
+### 🧠 3.1 Movie Success Prediction — Logistic Regression  
+
+#### 🧩 Goal
+Predict whether a movie is likely to be a **financial hit** or a **flop** using measurable production and audience metrics.
+
+| Property | Description |
+|:--|:--|
+| **Target Variable** | `hit_flag` → 1 = Hit, 0 = Flop |
+| **Hit Threshold** | Revenue > \$65,070,412 (median revenue) |
+| **Features Used** | `budget_log`, `popularity_log`, `vote_average`, `vote_count_log`, `runtime` |
+| **Samples** | 2961  (Train = 2368  |  Test = 593) |
+| **Model** | `LogisticRegression(max_iter = 1000)` |
+| **Type** | Supervised Classification |
+
+---
+
+### 📊 Model Performance
+
+| Metric | Value | Interpretation |
+|:--|:--|:--|
+| **Accuracy** | 0.816 | Model correctly classifies 81.6% of movies as hit or flop |
+| **Precision** | 0.814 | When the model predicts “Hit,” it is right 81% of the time |
+| **Recall** | 0.832 | The model detects 83% of actual hits |
+| **F1-Score** | 0.823 | Strong overall balance between precision and recall |
+
+---
+
+### 🧮 Confusion Matrix — Hit vs Flop Prediction  
+
+**Visualization**  
+
+<img width="640" height="480" alt="logistic_confusion_matrix" src="https://github.com/user-attachments/assets/48dae9df-1b3c-4e28-90c0-5f44ea87fd56" />
+
+| True Label | Predicted Flop (0) | Predicted Hit (1) |
+|:--|:--:|:--:|
+| **Actual Flop (0)** | 231 ✅ | 58 ❌ |
+| **Actual Hit (1)** | 51 ❌ | 253 ✅ |
+
+#### 🔍 Interpretation
+- Correct predictions (diagonal) = **484 / 593**, confirming ~82% accuracy.  
+- Low false positives and negatives show balanced classification.  
+- Slightly higher recall → model prefers to catch more true hits even if a few flops are mis-labeled as hits.  
+
+💡 **Meaning:** The model is highly effective at recognizing successful movies based on their budget and audience engagement signals.  
+
+---
+
+### 📈 Feature Effect Curves — Predicted Probability of Hit  
+
+The following plots show how each feature affects the model’s probability of classifying a movie as a hit (holding other variables constant at their median values).
+
+---
+
+#### 💰 Budget vs Hit Probability  
+
+<img width="960" height="600" alt="logit_curve_budget" src="https://github.com/user-attachments/assets/7cd032f7-7a55-4611-bd8f-ce66f7741d7c" />
+
+**Interpretation**  
+- Clear S-shaped (logistic) curve.  
+- As budget increases, hit probability rises steeply after a threshold.  
+- Indicates that **higher investment significantly increases chances of success**, likely due to marketing reach and production scale.
+
+---
+
+#### ⭐ Vote Count vs Hit Probability  
+
+<img width="960" height="600" alt="logit_curve_votes" src="https://github.com/user-attachments/assets/a733909e-0fcb-4bf4-9427-df39cdd895c2" />
+
+**Interpretation**  
+- Classic sigmoid curve: more votes → higher hit probability.  
+- Reflects that **audience engagement and visibility** strongly predict success.  
+- A movie with high vote counts is almost certain to be a hit.
+
+---
+
+#### 📣 Popularity vs Hit Probability  
+
+<img width="960" height="600" alt="logistic_probability_curve" src="https://github.com/user-attachments/assets/af7655fe-dd6b-439f-8fc6-d03f0979c07f" />
+
+**Interpretation**  
+- Nearly flat curve → popularity alone does not strongly affect hit likelihood.  
+- Shows that **popularity is a secondary signal**, often a result of other factors like budget and marketing effort.
+
+---
+
+### 💬 How Curves and Matrix Relate  
+
+| Visualization | Purpose | Connection to Matrix |
+|:--|:--|:--|
+| **Sigmoid Curves** | Show how predicted probability changes as each feature increases | Steeper curves (budget, votes) → strong predictive power → higher accuracy |
+| **Confusion Matrix** | Evaluates final predictions from all features combined | Confirms model reliability in classifying true hits and flops |
+| **Metrics** | Quantify overall performance | High precision and recall validate the curves’ insights |
+
+> The curves show how the model *thinks*, while the matrix shows how well that thinking matches reality.  
+
+---
+
+### 🧭 Combined Insights from Classification  
+
+| Observation | Likely Cause | Interpretation |
+|:--|:--|:--|
+| 💰 **Budget drives hit likelihood** | Marketing reach & production quality | Financial investment is a key determinant of success |
+| ⭐ **Audience votes predict success** | Viewer engagement & online visibility | Public attention translates to revenue and recognition |
+| 📣 **Popularity has minor impact** | Overlaps with other predictors | Alone, it’s not a reliable signal of profitability |
+| ⚖️ **Model balanced precision & recall** | Logistic boundary well calibrated | Reliable classification for both hits and flops |
+
+---
+
+### 🧩 Skills Demonstrated in This Section
+- Supervised classification using logistic regression  
+- Feature scaling and log transformation  
+- Probability curves and sigmoid visualization  
+- Confusion matrix interpretation and metrics evaluation  
+- Relating individual feature effects to overall model performance  
+
+---
+
+*(Next Sections: Forecasting Models, Recommendation Systems, etc.)*
+
