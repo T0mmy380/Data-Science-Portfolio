@@ -267,7 +267,7 @@ Predict whether a movie is likely to be a **financial hit** or a **flop** using 
 | **Target Variable** | `hit_flag` → 1 = Hit, 0 = Flop |
 | **Hit Threshold** | Revenue > \$65,070,412 (median revenue) |
 | **Features Used** | `budget_log`, `popularity_log`, `vote_average`, `vote_count_log`, `runtime` |
-| **Samples** | 2961  (Train = 2368  |  Test = 593) |
+| **Samples** | 2961  (Train = 2368  /  Test = 593) |
 | **Model** | `LogisticRegression(max_iter = 1000)` |
 | **Type** | Supervised Classification |
 
