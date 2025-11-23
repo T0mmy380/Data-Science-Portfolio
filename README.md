@@ -206,98 +206,133 @@ The film industry operates on a **three-tier economic system**, with budget as t
 
 # 🧠 Section 3: Classification Models
 
-Classification predicts categorical outcomes.  
-Here, Logistic Regression classifies movies as **Hit (1)** or **Flop (0)**.
+Classification models predict categorical outcomes.  
+In this section, Logistic Regression is used to classify whether a movie becomes a **Hit (1)** or a **Flop (0)** based on production and audience features.
 
 ---
 
 ## 🎬 3.1 Movie Success Prediction — Logistic Regression
 
 ### 🎯 Purpose  
-Predict whether a movie becomes a financial hit.
+To determine whether a movie will be a **financial hit** by analyzing measurable features such as budget, vote count, popularity, runtime, and ratings.  
+The goal is to understand *what drives success* and *how well the model can separate hits from flops*.
 
 ---
 
-## 📋 Model Setup
+## 📋 Model Summary
 
-| Property | Value |
-|----------|--------|
-| Target | hit_flag |
-| Hit Threshold | Revenue > \$65,070,412 |
-| Features | budget_log, popularity_log, vote_average, vote_count_log, runtime |
-| Samples | 2961 total |
-| Model | Logistic Regression (max_iter=1000) |
-
----
-
-## 📈 Model Performance
-
-| Metric | Value |
-|--------|-------|
-| Accuracy | 0.816 |
-| Precision | 0.814 |
-| Recall | 0.832 |
-| F1 Score | 0.823 |
+| Property | Description |
+|----------|-------------|
+| **Target Variable** | `hit_flag` (1 = Hit, 0 = Flop) |
+| **Hit Threshold** | Revenue > \$65,070,412 (median) |
+| **Features Used** | `budget_log`, `popularity_log`, `vote_average`, `vote_count_log`, `runtime` |
+| **Samples** | 2961 total (Train = 2368 / Test = 593) |
+| **Model** | Logistic Regression (max_iter = 1000) |
+| **Performance** | Accuracy: 0.816 • Precision: 0.814 • Recall: 0.832 • F1: 0.823 |
 
 ---
 
-## 🔵 Confusion Matrix
+## 📊 Confusion Matrix — Model Performance
 
 <img width="640" height="480" src="https://github.com/user-attachments/assets/f8fdcabf-5fab-4f2c-b175-e36527c0b2dd" />
 
-| True Label | Pred. 0 | Pred. 1 |
-|------------|---------|---------|
-| Actual 0 | 231 | 58 |
-| Actual 1 | 51  | 253 |
+### 🔍 Interpretation  
+- **484 / 593 correct predictions**  
+- Balanced classification between hits and flops  
+- **58 flops incorrectly predicted as hits**  
+- **51 hits incorrectly predicted as flops**
 
-### Interpretation  
-- Total correct: **484 / 593**  
-- Balanced false positives & false negatives  
-- Higher recall → good at catching hits  
+The model performs strongly and maintains consistency across both classes.  
+Most mistakes occur with movies in the “middle zone” (mid-budget / moderate engagement).
+
+### 💡 What This Shows  
+> The classifier can reliably distinguish success patterns.  
+> Misclassifications are natural for borderline films whose characteristics overlap.
 
 ---
 
-## 📈 Feature Probability Curves
+## 📈 Feature Probability Curves — Influence of Each Feature
 
-### 💰 Budget  
+These curves show how a feature changes the predicted probability of a movie being a hit, with all other variables held constant.
+
+---
+
+### 💰 Budget vs Hit Probability
+
 <img width="960" height="600" src="https://github.com/user-attachments/assets/20e869bd-f12d-4479-8cd4-13d558818a0e" />
 
-### ⭐ Vote Count  
-<img width="960" height="600" src="https://github.com/user-attachments/assets/c7aa70f1-3b72-4603-81f8-a819eaab63c0" />
+#### 🔍 Interpretation  
+- Low budgets → low hit probability  
+- Mid budgets → sharp increase (steep slope)  
+- High budgets → plateau near 1.0  
 
-### 🧡 Popularity  
-<img width="960" height="600" src="https://github.com/user-attachments/assets/c1a30e08-89ee-4f4e-8c8f-f83b04454922" />
+Budget has the **largest impact** on success.
+
+#### 💡 What This Shows  
+> Budget drives marketing scale, production value, and distribution reach — making it the most influential predictor.
 
 ---
 
-## 🟧 ROC Curve
+### ⭐ Vote Count vs Hit Probability
+
+<img width="960" height="600" src="https://github.com/user-attachments/assets/c7aa70f1-3b72-4603-81f8-a819eaab63c0" />
+
+#### 🔍 Interpretation  
+- Smooth upward curve  
+- More votes → higher likelihood of success  
+- No dramatic jumps like budget
+
+#### 💡 What This Shows  
+> Vote count reflects *audience engagement* — a key factor in achieving strong financial performance.
+
+---
+
+### 🧡 Popularity vs Hit Probability
+
+<img width="960" height="600" src="https://github.com/user-attachments/assets/c1a30e08-89ee-4f4e-8c8f-f83b04454922" />
+
+#### 🔍 Interpretation  
+- Very flat curve  
+- Popularity alone barely affects hit probability  
+- Effect often overshadowed by budget & vote count
+
+#### 💡 What This Shows  
+> Popularity is *not* a strong standalone indicator — it reflects temporary hype more than sustained performance.
+
+---
+
+## 🟧 ROC Curve — Overall Classification Ability
 
 <img width="1050" height="1050" src="https://github.com/user-attachments/assets/810eed27-4eaf-4a36-90fa-6907a6cae3f7" />
 
-### 🧠 Meaning  
-- AUC = **0.906**  
-- The model ranks hits above flops 90.6% of the time  
-- Strong overall separation ability  
+### 🔍 Interpretation  
+- **AUC = 0.906 → Excellent model quality**  
+- Curve is close to the top-left corner  
+- Model ranks hits higher than flops **90.6% of the time**
+
+### 💡 What This Shows  
+> The classifier performs strongly across all possible thresholds — not just at the default 0.5 cutoff.
 
 ---
 
-## 🔗 Relationship Between Curves, Matrix, and ROC
+## 🧠 Combined Insights from Classification
 
-| Visualization | Shows |
-|---------------|-------|
-| Feature Curves | How each input affects hit probability |
-| Confusion Matrix | Threshold-specific accuracy |
-| ROC Curve | Ability across *all* thresholds |
+| Observation | Interpretation |
+|------------|----------------|
+| 💰 Budget strongest predictor | Investment → visibility → higher success |
+| ⭐ Vote count meaningful | Wider engagement → higher revenue |
+| 🧡 Popularity weak | Not a reliable success indicator |
+| ⚖ Balanced performance | Good at both hits and flops |
+| 🟧 AUC = 0.906 | Strong capability to separate the two classes |
 
 ---
 
-## 🧩 Combined Insights from Classification
-
-| Observation | Meaning |
-|-------------|---------|
-| 💰 Budget dominates | Investment drives success |
-| ⭐ Vote count strong | Larger audiences = more hits |
-| 🧡 Popularity weak | Not meaningful alone |
-| ⚖ Balanced metrics | Reliable predictions |
+## 🧩 Skills Demonstrated in This Section
+- Binary classification modeling  
+- Confusion matrix analysis  
+- Probability curve interpretation  
+- ROC-AUC evaluation  
+- Understanding feature effects on categorical prediction  
+- Connecting predictive patterns to real industry behavior  
 
 ---
